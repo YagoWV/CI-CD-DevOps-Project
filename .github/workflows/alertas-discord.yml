@@ -1,0 +1,20 @@
+name: Alertas no Discord
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    types: [closed]
+
+jobs:
+  discordAlert:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Enviar alerta para o Discord
+      run: |
+        curl -H "Content-Type: application/json" \
+        -X POST \
+        -d "{\"content\": \"Novo commit ou merge no branch main!\"}" \
+        https://discord.com/api/webhooks/1290489518817939456/3lH3eOBRoVn-spKI_vnErdcHMXhRMzbmtSnvEX5zzWrGvDjfPQ6oUx5my8eVqRrK-D6v
